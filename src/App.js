@@ -6,15 +6,6 @@ import { createContext, useRef } from 'react';
 import _ from "lodash";
 import { useEffect, useState, } from 'react';
 import Navigation from './sections/Hero/Navigation/Navigation';
-// import ScrollSnap from 'scroll-snap'
-// import "swiper/swiper-bundle.css";
-// import "swiper/swiper.min";
-// import "swiper/css/navigation"
-import "swiper/swiper.min.css";
-
-// import 'swiper/swiper-bundle.min';
-// import 'swiper/scss/navigation';
-// import 'swiper/scss/pagination';
 
 export const PortfolioContext = createContext({});
 

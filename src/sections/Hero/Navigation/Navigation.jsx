@@ -71,7 +71,7 @@ export default ({ componentReferences }) => {
     return (
         <PortfolioContext.Consumer>
             {({ scrollSection, mainContainerRef }) => (
-                <div style={{ position: "fixed", top: "50%", right: -80, zIndex: 10 }}>
+                <div style={{ position: "fixed", top: "50%", right: -120, zIndex: 10 }}>
                     <ul
                         style={{
                             display: "flex",

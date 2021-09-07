@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { PortfolioContext } from '../../App';
-// import { Swiper, SwiperSlide } from "swiper/react";
-// import {Swiper,SwiperSlide} from "swiper/react/swiper-react"
-// import {SwiperSlide} from "swiper/react/swiper-slide"
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import {
     StyledButtonContainer,
     StyledCard,
@@ -20,12 +16,15 @@ import {
     StyledTechItem,
     StyledTechStackContainer,
     StyledButton,
+    StyledArrowContainerLeft,
+    StyledArrowContainerRight,
 } from './styles';
-import { SwiperSlide, Swiper } from 'swiper/react';
 
 import Carousel from '../../components/caroussel/carousel'
 import Arrows from '../../components/arrows/arrows';
 import { ScrollTrigger } from 'gsap/all'
+import styled from 'styled-components';
+
 const projects = [
     {
         title: 'E-learning Platform', stack: ['React', 'NodeJS', 'MongoDB', 'AWS S3'],
@@ -35,13 +34,19 @@ const projects = [
             'Multi-level Authentication',
             'Credit Card Payments',
             'Coinbase Commerce',
+
+            'server-side validation',
+            'front-end validation',
+            'xss input filtering',
             // 'Redis'
         ],
         features2: ['Google Authentication', 'GraphQL', 'Sagas', 'Push Notifications via Webpush Api', 'Material Design', 'Ckeditor Wysiwyg', 'Chat'],
         mobileImage: '/assets/images/boukacademy-mobile.png', desktopImage: '/assets/images/boukacademy-desktop.png'
     },
-    { title: 'Blog CMS', stack: ['React', 'Laravel', 'MySQL', 'AWS S3'], features: ['Real-time updates', 'Infinitly scalable file uploads', 'Material Design', 'TinyMCE'], mobileImage: '/assets/images/blogcms-mobile.png', desktopImage: '/assets/images/blogcms-desktop.png' },
-    { title: 'Travel Blog', stack: ['React'], features: ['Real-time updates', 'GSAP', 'E-mail Notifications'], mobileImage: '/assets/images/hitching-horizons-mobile.png', desktopImage: '/assets/images/hitching-horizons-desktop.png' },
+    { title: 'Blog CMS', stack: ['React', 'Laravel', 'MySQL', 'AWS S3'], features2: [], features: ['Real-time updates', 'Infinitly scalable file uploads', 'Material Design', 'TinyMCE'], mobileImage: '/assets/images/blogcms-mobile.png', desktopImage: '/assets/images/blogcms-desktop.png' },
+    { title: 'Travel Blog', stack: ['React'], features2: [],
+     features: ['Real-time updates', 'GSAP', 'E-mail Notifications','Comments','Newsletter','SVG Animation on Scroll'], 
+     mobileImage: '/assets/images/hitching-horizons-mobile.png', desktopImage: '/assets/images/hitching-horizons-desktop.png' },
 ];
 
 const ProjectsSection = ({ winSize, refSectionProjects: reference }) => {
@@ -73,15 +78,21 @@ const ProjectsSection = ({ winSize, refSectionProjects: reference }) => {
             <StyledMobileImage src={pr.mobileImage} style={{ objectFit: 'cover', width: 100, top: '45%', right: '5%', transform: 'translateY(-45%)', position: 'absolute' }} />
             <StyledTechStackContainer>
                 {pr.stack.map(st => (
-                    <StyledTechItem>{st}</StyledTechItem>
+                    <StyledTechItem winSize={winSize}>{st}</StyledTechItem>
                 ))}
             </StyledTechStackContainer>
             <StyledFeaturesContainer>
-                {(pr.features).map(feature => (
-                    <StyledFeatureContainer key={feature}>
-                        <StyledCheckMark src="/assets/icons/check-mark-circle-orange.png" />
-                        <StyledFeature>{feature}</StyledFeature>
-                    </StyledFeatureContainer>
+                {(pr.features).map((feature, i) => (
+                    <StyledFeaturesColumn isItemToRight={!!pr.features2[i]}>
+                        <StyledFeatureContainer key={feature}>
+                            <StyledCheckMark src="/assets/icons/check-mark-circle-orange.png" />
+                            <StyledFeature>{feature}</StyledFeature>
+                        </StyledFeatureContainer>
+                        {pr.features2[i] && <StyledFeatureContainer key={pr.features2[i]}>
+                            <StyledCheckMark src="/assets/icons/check-mark-circle-orange.png" />
+                            <StyledFeature>{pr.features2[i]}</StyledFeature>
+                        </StyledFeatureContainer>}
+                    </StyledFeaturesColumn>
                 ))}
             </StyledFeaturesContainer>
             <StyledButtonContainer>
@@ -98,8 +109,8 @@ const ProjectsSection = ({ winSize, refSectionProjects: reference }) => {
             {({ refSectionProjects, winSize }) => (
                 <StyledMainContainer ref={refSectionProjects}>
                     {winSize > 1 && <StyledMainHeader>Projects</StyledMainHeader>}
-                    {currentSlide > 0 && <div style={{ position: 'absolute', top: '50%', transform: 'translateY(-50%) rotate(90deg)', left: 0, zIndex: 1 }}><Arrows /></div>}
-                    {currentSlide < 2 && <div style={{ position: 'absolute', top: '50%', transform: 'translateY(-50%) rotate(-90deg)', right: 0, zIndex: 1 }}><Arrows /></div>}
+                    {(currentSlide > 0 && winSize === 1) && <StyledArrowContainerLeft><Arrows /></StyledArrowContainerLeft>}
+                    {(currentSlide < 2 && winSize === 1) && <StyledArrowContainerRight><Arrows /></StyledArrowContainerRight>}
                     <StyledProjectContainer>
 
                         {winSize === 1 ? <Carousel onChangeSlide={(newValue) => handleSlide(newValue)} auto axis={'x'}
@@ -115,3 +126,9 @@ const ProjectsSection = ({ winSize, refSectionProjects: reference }) => {
 }
 
 export default ProjectsSection;
+
+const StyledFeaturesColumn = styled.div`
+display: flex; 
+justify-content: ${props => props.isItemToRight ? 'space-evenly' : 'flex-start'};
+ padding: 0 5px;
+`

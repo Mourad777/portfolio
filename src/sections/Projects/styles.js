@@ -37,7 +37,7 @@ height:100%;
 export const StyledCard = styled.div`
 background: rgb(28,28,28);
 height: 50vh; 
-min-height:600px;
+min-height:640px;
 width: ${props => props.winSize === 1 ? '300px' : '400px'}; 
 margin:${props => props.winSize === 1 ? 'auto' : '0 5px'}; 
 position: relative;
@@ -71,7 +71,6 @@ position: absolute;
 
 export const StyledTechStackContainer = styled.div`
 width: 100%; 
-margin-top: 20px; 
 position: absolute; 
 top: 55%; 
 display: flex; 
@@ -79,12 +78,12 @@ justify-content: space-around;
 `;
 
 export const StyledTechItem = styled.span`
-font-family: Quicksand; color: rgb(232 191 65); font-size: 1.2em;
+font-family: Quicksand; color: rgb(232 191 65); font-size:${props => props.winSize === 1 ? '1em' : '1.2em'}; ;
 `;
 
 export const StyledFeaturesContainer = styled.div`
 width: 100%; 
-margin-top: 30px; 
+margin-top: 10px; 
 position: absolute; 
 top: 58%; 
 display: flex; 
@@ -95,17 +94,19 @@ flex-direction: column;
 export const StyledFeatureContainer = styled.div`
 display: flex; 
 margin-top: 10px; 
-padding: 0 10px; 
+
 align-items: center;
+width:50%;
 `
 
 export const StyledCheckMark = styled.img`
-object-fit: cover; width: 15px; height: 15px; margin-right: 12px;
+object-fit: cover; width: 12px; height: 12px; margin-right: 12px;
 `
 
 export const StyledFeature = styled.span`
 font-family: Quicksand;
 color: rgb(2 224 255);
+font-size:0.8em;
 `
 
 export const StyledButtonContainer = styled.div`
@@ -126,4 +127,20 @@ transition:all 0.2s ease-in;
     background:rgb(28,28,28);
     color:rgb(232 191 65);
 }
+`
+
+export const StyledArrowContainerLeft = styled.div`
+position: absolute;
+top: 50%;
+transform: translateY(-50%) rotate(90deg);
+left: 0;
+zIndex: 1;
+`
+
+export const StyledArrowContainerRight = styled.div`
+position: absolute;
+top: 50%;
+transform: translateY(-50%) rotate(-90deg);
+right: 0;
+zIndex: 1;
 `
