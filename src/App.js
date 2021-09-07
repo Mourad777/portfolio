@@ -6,7 +6,15 @@ import { createContext, useRef } from 'react';
 import _ from "lodash";
 import { useEffect, useState, } from 'react';
 import Navigation from './sections/Hero/Navigation/Navigation';
-import ScrollSnap from 'scroll-snap'
+// import ScrollSnap from 'scroll-snap'
+// import "swiper/swiper-bundle.css";
+// import "swiper/swiper.min";
+// import "swiper/css/navigation"
+import "swiper/swiper.min.css";
+
+// import 'swiper/swiper-bundle.min';
+// import 'swiper/scss/navigation';
+// import 'swiper/scss/pagination';
 
 export const PortfolioContext = createContext({});
 
@@ -39,7 +47,7 @@ function App() {
     }
   }, []);
 
-  console.log('scrollSection',scrollSection)
+  console.log('scrollSection', scrollSection)
 
   const handleScroll = () => {
     setScrollPosition(window.scrollY)
@@ -62,9 +70,10 @@ function App() {
         refSectionContact,
         mainContainerRef,
       }}>
-        <Navigation componentReferences={{ welcome: refSectionHero, projects: refSectionProjects, contact: refSectionContact }} />
-        <Hero />
-        <Projects />
+        {winSize > 1 && (<Navigation componentReferences={{ welcome: refSectionHero, projects: refSectionProjects, contact: refSectionContact }} />
+        )}
+        <Hero refSectionHero={refSectionHero}/>
+        <Projects refSectionProjects={refSectionProjects} winSize={winSize}/>
         <Contact />
       </PortfolioContext.Provider>
     </div>

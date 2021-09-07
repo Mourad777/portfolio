@@ -1,25 +1,7 @@
-import React from 'react'
-import styled from 'styled-components'
+import React, {useEffect} from 'react'
 import { PortfolioContext } from '../../App'
-
-
-const icons = [
-    '/assets/icons/react.png',
-    '/assets/icons/nodejs.png',
-    '/assets/icons/laravel.png',
-]
-
-const iconsGreen1 = [
-    '/assets/icons/react-green-1.png',
-    '/assets/icons/nodejs-green-1.png',
-    '/assets/icons/laravel-green-1.png',
-]
-
-const iconsGreen2 = [
-    '/assets/icons/react-green-2.png',
-    '/assets/icons/nodejs-green-2.png',
-    '/assets/icons/laravel-green-2.png',
-]
+import Arrows from '../../components/arrows/arrows'
+import { ScrollTrigger } from 'gsap/all'
 
 const iconsOrangeBlue1 = [
     '/assets/icons/nodejs-yellow-1.png',
@@ -27,32 +9,19 @@ const iconsOrangeBlue1 = [
     '/assets/icons/laravel-yellow-1.png',
 ]
 
-const StyledArrowsPath = styled.path`
-stroke: #2994D1;
-fill: transparent;
-stroke-width: 1px;  
-animation: arrow 2s infinite;
--webkit-animation: arrow 2s infinite;
 
-@keyframes arrow
-{
-0% {opacity:0}
-40% {opacity:1}
-80% {opacity:0}
-100% {opacity:0}
-}
-`
+const Hero = ({refSectionHero:reference}) => {
 
-const StyledArrows = styled.svg`
-width: 60px;
-height: 72px;
-position: absolute;
-left: 50%;
-margin-left: -30px;
-bottom: 20px;
-`
+    useEffect(() => {
+        ScrollTrigger.create({
+            trigger: reference.current,
+            start: "top top",
+            scrub: 0.5,
+            snap: true,
+            pin: false,
 
-const Hero = () => {
+        });
+    }, [reference])
     return (
         <PortfolioContext.Consumer>
             {({ winSize,refSectionHero }) => (
@@ -90,11 +59,8 @@ const Hero = () => {
                             ))}
                         </div>
                     </div>
-                    <StyledArrows>
-                        <StyledArrowsPath style={{ animationDelay: '-1s' }} d="M0 0 L30 32 L60 0"></StyledArrowsPath>
-                        <StyledArrowsPath style={{ animationDelay: '-0.5s' }} d="M0 20 L30 52 L60 20"></StyledArrowsPath>
-                        <StyledArrowsPath style={{ animationDelay: '0s' }} d="M0 40 L30 72 L60 40"></StyledArrowsPath>
-                    </StyledArrows>
+                    <Arrows />
+
                 </div>)}
         </PortfolioContext.Consumer>
     )

@@ -19,24 +19,27 @@ font-size: 3em;
 position: absolute;
 top: 0;
 z-index: 2;
+margin:0;
 `;
 
 export const StyledProjectContainer = styled.div`
 width: 100%; 
 display: flex; 
+align-items:center;
 justify-content: space-around; 
 position: absolute; 
 top: 50%; 
 left: 50%; 
 transform: translate(-50%,-50%);
+height:100%;
 `;
 
 export const StyledCard = styled.div`
 background: rgb(28,28,28);
 height: 50vh; 
-min-height: 700px; 
-width: 400px; 
-margin: 0 5px; 
+min-height:600px;
+width: ${props => props.winSize === 1 ? '300px' : '400px'}; 
+margin:${props => props.winSize === 1 ? 'auto' : '0 5px'}; 
 position: relative;
 `;
 
