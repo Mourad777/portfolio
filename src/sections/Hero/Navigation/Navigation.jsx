@@ -63,15 +63,16 @@ export default ({ componentReferences }) => {
         { name: "Contact", id: "contact-section", ref: componentReferences.contact }
     ].filter(item => item);
 
-    const handleScroll = (ref, mainContainerRef) => {
-        console.log('scroll to ...', mainContainerRef.current)
-        gsap.to(window, { duration: 2, scrollTo: ref.current });
+    const handleScroll = (ref) => {
+        if(ref.current){
+            gsap.to(window, { duration: 2, scrollTo: ref.current });
+        }
     }
 
     return (
         <PortfolioContext.Consumer>
             {({ scrollSection, mainContainerRef }) => (
-                <div style={{ position: "fixed", top: "50%", right: -120, zIndex: 10 }}>
+                <div style={{ position: "fixed", top: "50%", right: -98, zIndex: 10 }}>
                     <ul
                         style={{
                             display: "flex",

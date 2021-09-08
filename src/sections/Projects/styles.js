@@ -91,6 +91,12 @@ justify-content: space-between;
 flex-direction: column;
 `
 
+export const StyledFeaturesColumn = styled.div`
+display: flex; 
+justify-content: ${props => props.isItemToRight ? 'space-evenly' : 'flex-start'};
+padding: 0 5px;
+`
+
 export const StyledFeatureContainer = styled.div`
 display: flex; 
 margin-top: 10px; 
@@ -113,7 +119,7 @@ export const StyledButtonContainer = styled.div`
 display: flex; width: 100%; position: absolute; bottom: 0;
 `
 
-export const StyledButton = styled.button`
+export const StyledButton = styled.a`
 cursor: pointer; 
 width: 50%; 
 font-family: Quicksand; 
@@ -123,6 +129,8 @@ background: rgb(232 191 65);
 color: rgb(28,28,28); 
 padding: 10px;
 transition:all 0.2s ease-in;
+text-align:center;
+text-decoration:none;
 &:hover {
     background:rgb(28,28,28);
     color:rgb(232 191 65);

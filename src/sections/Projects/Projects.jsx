@@ -18,36 +18,13 @@ import {
     StyledButton,
     StyledArrowContainerLeft,
     StyledArrowContainerRight,
+    StyledFeaturesColumn,
 } from './styles';
 
 import Carousel from '../../components/caroussel/carousel'
 import Arrows from '../../components/arrows/arrows';
 import { ScrollTrigger } from 'gsap/all'
-import styled from 'styled-components';
-
-const projects = [
-    {
-        title: 'E-learning Platform', stack: ['React', 'NodeJS', 'MongoDB', 'AWS S3'],
-        features: [
-            'SocketIO',
-            'Redux/Redux Forms',
-            'Multi-level Authentication',
-            'Credit Card Payments',
-            'Coinbase Commerce',
-
-            'server-side validation',
-            'front-end validation',
-            'xss input filtering',
-            // 'Redis'
-        ],
-        features2: ['Google Authentication', 'GraphQL', 'Sagas', 'Push Notifications via Webpush Api', 'Material Design', 'Ckeditor Wysiwyg', 'Chat'],
-        mobileImage: '/assets/images/boukacademy-mobile.png', desktopImage: '/assets/images/boukacademy-desktop.png'
-    },
-    { title: 'Blog CMS', stack: ['React', 'Laravel', 'MySQL', 'AWS S3'], features2: [], features: ['Real-time updates', 'Infinitly scalable file uploads', 'Material Design', 'TinyMCE'], mobileImage: '/assets/images/blogcms-mobile.png', desktopImage: '/assets/images/blogcms-desktop.png' },
-    { title: 'Travel Blog', stack: ['React'], features2: [],
-     features: ['Real-time updates', 'GSAP', 'E-mail Notifications','Comments','Newsletter','SVG Animation on Scroll'], 
-     mobileImage: '/assets/images/hitching-horizons-mobile.png', desktopImage: '/assets/images/hitching-horizons-desktop.png' },
-];
+import { projects } from './projectData';
 
 const ProjectsSection = ({ winSize, refSectionProjects: reference }) => {
 
@@ -67,8 +44,6 @@ const ProjectsSection = ({ winSize, refSectionProjects: reference }) => {
     const handleSlide = (newValue) => {
         setCurrentSlide(newValue)
     }
-
-    console.log('winsize in projects', winSize)
 
     const Projects = projects.map(pr => (
 
@@ -96,8 +71,8 @@ const ProjectsSection = ({ winSize, refSectionProjects: reference }) => {
                 ))}
             </StyledFeaturesContainer>
             <StyledButtonContainer>
-                <StyledButton >Demo</StyledButton>
-                <StyledButton >Code</StyledButton>
+                <StyledButton href={pr.liveProjectLink} >Live Project</StyledButton>
+                <StyledButton href={pr.codeLink} >Code</StyledButton>
             </StyledButtonContainer>
 
         </StyledCard>
@@ -126,9 +101,3 @@ const ProjectsSection = ({ winSize, refSectionProjects: reference }) => {
 }
 
 export default ProjectsSection;
-
-const StyledFeaturesColumn = styled.div`
-display: flex; 
-justify-content: ${props => props.isItemToRight ? 'space-evenly' : 'flex-start'};
- padding: 0 5px;
-`
