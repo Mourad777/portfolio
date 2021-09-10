@@ -135,7 +135,7 @@ margin-right: 12px;
 export const StyledFeature = styled.span`
 font-family: Quicksand;
 color: rgb(2 224 255);
-font-size:0.8em;
+font-size:0.9em;
 `
 
 export const StyledButtonContainer = styled.div`
