@@ -62,7 +62,7 @@ const ProjectsSection = ({ winSize, refSectionProjects: reference }) => {
             </StyledTechStackContainer>
             <StyledFeaturesContainer>
                 {(pr.features).map((feature, i) => (
-                    <StyledFeaturesColumn isItemToRight={!!pr.features2[i]}>
+                    <StyledFeaturesColumn isItemToRight={!pr.features2[i]}>
                         <StyledFeatureContainer key={feature}>
                             <StyledCheckMark src="/assets/icons/check-mark-circle-orange.png" />
                             <StyledFeature>{feature}</StyledFeature>

@@ -114,7 +114,7 @@ flex-direction: column;
 export const StyledFeaturesColumn = styled.div`
 display: flex; 
 justify-content: ${props => props.isItemToRight ? 'space-evenly' : 'flex-start'};
-padding: 0 5px;
+padding: 0 15px;
 `
 
 export const StyledFeatureContainer = styled.div`
@@ -126,7 +126,10 @@ width:50%;
 `
 
 export const StyledCheckMark = styled.img`
-object-fit: cover; width: 12px; height: 12px; margin-right: 12px;
+object-fit: cover; 
+width: 12px; 
+height: 12px; 
+margin-right: 12px;
 `
 
 export const StyledFeature = styled.span`
@@ -136,7 +139,10 @@ font-size:0.8em;
 `
 
 export const StyledButtonContainer = styled.div`
-display: flex; width: 100%; position: absolute; bottom: 0;
+display: flex; 
+width: 100%; 
+position: absolute; 
+bottom: 0;
 `
 
 export const StyledButton = styled.a`
@@ -162,7 +168,7 @@ position: absolute;
 top: 50%;
 transform: translateY(-50%) rotate(90deg);
 left: 0;
-zIndex: 1;
+z-index: 1;
 `
 
 export const StyledArrowContainerRight = styled.div`
@@ -170,5 +176,5 @@ position: absolute;
 top: 50%;
 transform: translateY(-50%) rotate(-90deg);
 right: 0;
-zIndex: 1;
+z-index: 1;
 `

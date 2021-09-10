@@ -8,13 +8,16 @@ export const projects = [
             'Credit Card Payments',
             'Coinbase Commerce',
 
-            'server-side validation',
-            'front-end validation',
-            'xss input filtering',
+            // 'server-side validation',
+            // 'front-end validation',
+            // 'xss input filtering',
             // 'i18n for Multilingual Support',
             // 'Redis'
         ],
-        features2: ['Google Authentication', 'GraphQL', 'Sagas', 'Push Notifications via Webpush Api', 'Material Design', 'Ckeditor Wysiwyg', 'Chat'],
+        features2: [
+            'Google Authentication', 'Chat', 'Sagas', 'Push Notifications via Webpush Api', 'Material Design',
+        //  'Ckeditor Wysiwyg', 'GraphQL'
+        ],
         mobileGif: '/assets/images/boukacademy-mobile-gif.gif', 
         desktopGif: '/assets/images/boukacademy-desktop-gif.gif',
         codeLink: 'https://github.com/Mourad777/boukacademy',
