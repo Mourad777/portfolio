@@ -5,13 +5,15 @@ import {
     StyledCard,
     StyledCardTitle,
     StyledCheckMark,
-    StyledDesktopImage,
+    StyledDesktopOutline,
+    StyledDesktopGif,
     StyledFeature,
     StyledFeatureContainer,
     StyledFeaturesContainer,
     StyledMainContainer,
     StyledMainHeader,
-    StyledMobileImage,
+    StyledMobileOutline,
+    StyledMobileGif,
     StyledProjectContainer,
     StyledTechItem,
     StyledTechStackContainer,
@@ -19,6 +21,7 @@ import {
     StyledArrowContainerLeft,
     StyledArrowContainerRight,
     StyledFeaturesColumn,
+
 } from './styles';
 
 import Carousel from '../../components/caroussel/carousel'
@@ -46,11 +49,12 @@ const ProjectsSection = ({ winSize, refSectionProjects: reference }) => {
     }
 
     const Projects = projects.map(pr => (
-
         <StyledCard winSize={winSize}>
             <StyledCardTitle>{pr.title}</StyledCardTitle>
-            <StyledDesktopImage src={pr.desktopImage} />
-            <StyledMobileImage src={pr.mobileImage} style={{ objectFit: 'cover', width: 100, top: '45%', right: '5%', transform: 'translateY(-45%)', position: 'absolute' }} />
+            <StyledDesktopGif src={pr.desktopGif} />
+            <StyledDesktopOutline src="/assets/images/desktop-empty.png" />
+            <StyledMobileGif src={pr.mobileGif} />
+            <StyledMobileOutline src="/assets/images/mobile-empty.png" />
             <StyledTechStackContainer>
                 {pr.stack.map(st => (
                     <StyledTechItem winSize={winSize}>{st}</StyledTechItem>
@@ -71,10 +75,9 @@ const ProjectsSection = ({ winSize, refSectionProjects: reference }) => {
                 ))}
             </StyledFeaturesContainer>
             <StyledButtonContainer>
-                <StyledButton href={pr.liveProjectLink} >Live Project</StyledButton>
+                <StyledButton href={pr.liveProjectLink} >Project</StyledButton>
                 <StyledButton href={pr.codeLink} >Code</StyledButton>
             </StyledButtonContainer>
-
         </StyledCard>
     ))
 
@@ -93,7 +96,6 @@ const ProjectsSection = ({ winSize, refSectionProjects: reference }) => {
                             className="custom-class">
                             {Projects}
                         </Carousel> : Projects}
-
                     </StyledProjectContainer>
                 </StyledMainContainer>)}
         </PortfolioContext.Consumer>

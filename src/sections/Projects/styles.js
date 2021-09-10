@@ -51,7 +51,7 @@ font-weight: 500;
 font-size: 1.5em;
 `;
 
-export const StyledDesktopImage = styled.img`
+export const StyledDesktopOutline = styled.img`
 object-fit: cover; 
 width: 300px; 
 top: 20%; 
@@ -60,12 +60,30 @@ transform: translate(-50%,-20%);
 position: absolute;
 `;
 
-export const StyledMobileImage = styled.img`
+export const StyledDesktopGif = styled.img`
+object-fit: cover; 
+width: 289px; 
+top: 20%; 
+left: 50%; 
+transform: translate(-50%,-15%); 
+position: absolute;
+`;
+
+export const StyledMobileOutline = styled.img`
 object-fit: cover; 
 width: 100px; 
 top: 45%; 
 right: 5%; 
 transform: translateY(-45%); 
+position: absolute;
+`;
+
+export const StyledMobileGif = styled.img`
+object-fit: cover; 
+width: 52px; 
+top: 45%; 
+right: 5%; 
+transform: translate(-24px,-45%); 
 position: absolute;
 `;
 
@@ -78,7 +96,9 @@ justify-content: space-around;
 `;
 
 export const StyledTechItem = styled.span`
-font-family: Quicksand; color: rgb(232 191 65); font-size:${props => props.winSize === 1 ? '1em' : '1.2em'}; ;
+font-family: Quicksand; 
+color: rgb(232 191 65); 
+font-size:${props => props.winSize === 1 ? '1em' : '1.2em'};
 `;
 
 export const StyledFeaturesContainer = styled.div`
@@ -123,7 +143,7 @@ export const StyledButton = styled.a`
 cursor: pointer; 
 width: 50%; 
 font-family: Quicksand; 
-font-size: 1.5em; 
+font-size: 1.3em; 
 border: none; 
 background: rgb(232 191 65); 
 color: rgb(28,28,28); 
