@@ -33,7 +33,7 @@ const Hero = ({ refSectionHero: reference }) => {
         <PortfolioContext.Consumer>
             {({ winSize, refSectionHero, refSectionProjects, refSectionContact }) => (
                 <div ref={refSectionHero} style={{ height: '100vh', display: 'relative' }}>
-                    <img src="/assets/images/hero-pic-blue-orange-big.jpg" style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
+                    <img src="/assets/images/hero-pic-blue-orange-big.webp" style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
 
                     <div style={{
                         position: 'absolute',
