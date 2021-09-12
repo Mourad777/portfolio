@@ -41,7 +41,7 @@ const Hero = ({ refSectionHero: reference }) => {
 
     return (
         <PortfolioContext.Consumer>
-            {({ winSize, refSectionHero, refSectionProjects, handleResume }) => (
+            {({ winSize, refSectionHero, refSectionProjects, handleResume,refSectionContact }) => (
                 <div ref={refSectionHero} style={{ height: '100vh', display: 'relative' }}>
                     <img src="/assets/images/hero-pic-blue-orange-big.webp" style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
                     <div style={{
@@ -78,7 +78,7 @@ const Hero = ({ refSectionHero: reference }) => {
                         </div>
 
                         <div style={{ display: 'flex', position: 'absolute', top: '70%', left: '50%', transform: 'translateX(-50%)', height: 100, width: '100%' }}>
-                            <StyledButton onClick={() => handleScroll(refSectionProjects)}>Contact Me</StyledButton>
+                            <StyledButton onClick={() => handleScroll(refSectionContact)}>Contact Me</StyledButton>
                             <StyledButton style={{ color: 'rgb(232 191 65)' }} onClick={() => handleScroll(refSectionProjects)}>My Work</StyledButton>
                             <StyledButton onClick={() => handleResume(true)}>Resume</StyledButton>
                         </div>
