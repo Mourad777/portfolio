@@ -82,16 +82,16 @@ const Resume = () => {
                                 <StyledContentLine>Northern Indigenous Villages Hospitals/Clinics</StyledContentLine>
                                 <StyledContentLine>July 2019 - Present</StyledContentLine>
                                 <StyledContentLine>Role: Pharmacy Technician</StyledContentLine>
-                                <StyledSubHeader>Pharmaprix </StyledSubHeader>
-                                <StyledContentLine>Montreal, Quebec</StyledContentLine>
-                                <StyledContentLine>December 2015 -July 2019</StyledContentLine>
-                                <StyledContentLine>Role: Pharmacy Technician</StyledContentLine>
-                            </StyledSecondaryContainerColumn>
-                            <StyledSecondaryContainerColumn>
                                 <StyledSubHeader>Rexall Pharmaplus </StyledSubHeader>
                                 <StyledContentLine>Waterloo, Ontario</StyledContentLine>
                                 <StyledContentLine>September 2014 - May 2015</StyledContentLine>
                                 <StyledContentLine>October 2012 - May 2014</StyledContentLine>
+                                <StyledContentLine>Role: Pharmacy Technician</StyledContentLine>
+                            </StyledSecondaryContainerColumn>
+                            <StyledSecondaryContainerColumn>
+                                <StyledSubHeader>Pharmaprix </StyledSubHeader>
+                                <StyledContentLine>Montreal, Quebec</StyledContentLine>
+                                <StyledContentLine>December 2015 -July 2019</StyledContentLine>
                                 <StyledContentLine>Role: Pharmacy Technician</StyledContentLine>
                                 <StyledSubHeader>Uniprix</StyledSubHeader>
                                 <StyledContentLine>Lasalle, Quebec</StyledContentLine>
