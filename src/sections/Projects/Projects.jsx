@@ -100,11 +100,11 @@ const ProjectsSection = ({ winSize, refSectionProjects: reference }) => {
             {({ refSectionProjects, winSize }) => (
                 <StyledMainContainer ref={refSectionProjects}>
                     {winSize > 1 && <StyledMainHeader>Projects</StyledMainHeader>}
-                    {(currentSlide > 0 && winSize === 1) && <StyledArrowContainerLeft><Arrows /></StyledArrowContainerLeft>}
-                    {(currentSlide < 2 && winSize === 1) && <StyledArrowContainerRight><Arrows /></StyledArrowContainerRight>}
+                    {(currentSlide > 0 && (winSize < 3)) && <StyledArrowContainerLeft><Arrows /></StyledArrowContainerLeft>}
+                    {(currentSlide < 2 && (winSize < 3)) && <StyledArrowContainerRight><Arrows /></StyledArrowContainerRight>}
                     <StyledProjectContainer>
 
-                        {winSize === 1 ? <Carousel onChangeSlide={(newValue) => handleSlide(newValue)} auto axis={'x'}
+                        {winSize < 3 ? <Carousel onChangeSlide={(newValue) => handleSlide(newValue)} auto axis={'x'}
                             // widgets={[Dots, Buttons]}
                             className="custom-class">
                             {Projects}

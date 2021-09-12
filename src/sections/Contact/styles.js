@@ -24,6 +24,8 @@ top: 50%;
 left: 50%; 
 transform: translate(-50%,-50%);
 min-height:570px;
+opacity:${props => props.isConfirmationMessage ? 0.1 : 1};
+transition:opacity 0.2 ease-in;
 `
 
 export const StyledInputGroup = styled.div`
@@ -60,8 +62,17 @@ display: block;
 color: #fff;
 height:100px;
 `
+
+export const StyledInputError = styled.span`
+color: #d10000;
+padding:10px;
+font-family:Quicksand;
+font-size:0.8em;
+`;
+
+
 export const StyledSubmitButton = styled.button`
-width:${props => props.winSize === 1 ? '324px' : '500px'};
+width:${props => props.winSize === 1 ? '324px' : '504px'};
 background:rgb(50,50,50);
 position:absolute;
 bottom:0;
@@ -74,4 +85,22 @@ transform:translateX(-50%);
 cursor:pointer;
 padding:10px;
 margin-bottom:20px;
+`
+
+export const StyledLoaderWrapper = styled.div`
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%,-50%);
+`
+
+export const StyledConfirmationMessage = styled.span`
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+color:rgb(232 191 65);
+font-family:Quicksand;
+text-align:center;
+z-index:5;
 `

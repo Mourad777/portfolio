@@ -2,10 +2,11 @@ import Hero from './sections/Hero/Hero'
 import Projects from './sections/Projects/Projects'
 import Contact from './sections/Contact/Contact'
 import { getWindowSizeInteger } from './utility';
-import { createContext, useRef } from 'react';
+import { createContext, Fragment, useRef } from 'react';
 import _ from "lodash";
 import { useEffect, useState, } from 'react';
 import Navigation from './sections/Hero/Navigation/Navigation';
+import Resume from './sections/Resume/Resume';
 
 export const PortfolioContext = createContext({});
 
@@ -14,6 +15,7 @@ function App() {
   const [winSize, setWinSize] = useState(getWindowSizeInteger(window.innerWidth));
   const [scrollSection, setScrollSection] = useState(1);
   const [scrollPosition, setScrollPosition] = useState(1);
+  const [isResumeOpen, setIsResumeOpen] = useState(false);
   const refSectionHero = useRef(null)
   const refSectionProjects = useRef(null)
   const refSectionContact = useRef(null)
@@ -29,7 +31,6 @@ function App() {
     }
   }, [scrollPosition, winSize])
 
-  console.log('winSize', winSize)
   useEffect(() => {
     document.addEventListener("scroll", _.throttle(handleScroll, 200, {}));
     window.addEventListener("resize", _.throttle(getWindowSize, 200), { passive: true });
@@ -38,7 +39,6 @@ function App() {
     }
   }, []);
 
-  console.log('scrollSection', scrollSection)
 
   const handleScroll = () => {
     setScrollPosition(window.scrollY)
@@ -48,6 +48,10 @@ function App() {
     const windowSizeWidthInt = getWindowSizeInteger(window.innerWidth);
 
     setWinSize(windowSizeWidthInt);
+  };
+
+  const handleResume = (value) => {
+    setIsResumeOpen(value)
   };
 
   return (
@@ -60,12 +64,17 @@ function App() {
         refSectionProjects,
         refSectionContact,
         mainContainerRef,
+        handleResume
       }}>
-        {winSize > 1 && (<Navigation componentReferences={{ welcome: refSectionHero, projects: refSectionProjects, contact: refSectionContact }} />
-        )}
-        <Hero refSectionHero={refSectionHero}/>
-        <Projects refSectionProjects={refSectionProjects} winSize={winSize}/>
-        <Contact />
+        {isResumeOpen ? <Resume /> :
+          <Fragment>
+            {winSize > 1 && (<Navigation componentReferences={{ welcome: refSectionHero, projects: refSectionProjects, contact: refSectionContact }} />
+            )}
+            <Hero refSectionHero={refSectionHero} />
+            <Projects refSectionProjects={refSectionProjects} winSize={winSize} />
+            <Contact />
+          </Fragment>
+        }
       </PortfolioContext.Provider>
     </div>
   );

@@ -38,9 +38,12 @@ export const StyledCard = styled.div`
 background: rgb(28,28,28);
 height: 50vh; 
 min-height:570px;
-width: ${props => props.winSize === 1 ? '300px' : '400px'}; 
-margin:${props => props.winSize === 1 ? 'auto' : '0 5px'}; 
+width: ${props => props.winSize < 3 ? '300px' : '400px'}; 
+margin:${props => props.winSize < 3 ? 'auto' : '0 5px'}; 
 position: relative;
+top:50%;
+transform:translateY(-50%);
+align-self:start;
 
 `;
 
@@ -97,7 +100,7 @@ cursor:pointer;
 export const StyledTechStackContainer = styled.div`
 width: 100%; 
 position: absolute; 
-top: 50%; 
+top: 52%; 
 display: flex; 
 justify-content: space-around;
 `;
@@ -105,14 +108,14 @@ justify-content: space-around;
 export const StyledTechItem = styled.span`
 font-family: Quicksand; 
 color: rgb(232 191 65); 
-font-size:${props => props.winSize === 1 ? '1em' : '1.2em'};
+font-size:${props => props.winSize < 3 ? '1em' : '1.2em'};
 `;
 
 export const StyledFeaturesContainer = styled.div`
 width: 100%; 
 margin-top: 10px; 
 position: absolute; 
-top: 54%; 
+top: 57%; 
 display: flex; 
 justify-content: space-between; 
 flex-direction: column;
