@@ -20,26 +20,26 @@ margin:0 0 5px 0;
 export const StyledHeader = styled.p`
 font-family: Quicksand; 
 font-weight: bold;
-padding:10px 0 0 25px;
+padding:10px 25px 0 25px;
 margin:0;
 `
 
 export const StyledObjective = styled.p`
 font-family: Quicksand;
-padding:5px 0 0 30px;
+padding:5px 30px 0 30px;
 font-size: 0.8em;
 `
 
 export const StyledSubHeader = styled.p`
 font-family: Quicksand;
-padding:0 0 0 30px;
+padding: 0 30px;
 font-size: 0.9em;
 text-decoration:underline;
 `
 
 export const StyledContentLine = styled.p`
 font-family: Quicksand;
-padding-left: 30px;
+padding:0 30px;
 font-size: 0.7em;
 margin:0;
 `
