@@ -38,8 +38,8 @@ export const projects = [
          'TinyMCE'],
         mobileGif: '/assets/images/blog-cms-mobile-gif.gif',
         desktopGif: '/assets/images/blog-cms-desktop-gif.gif',
-        codeLink: 'https://github.com/Mourad777/travel-blog',
-        liveProjectLink:'https://travel-blog-bouka-admin.netlify.app',
+        codeLink: 'https://github.com/Mourad777/travel-blog-admin-demo',
+        liveProjectLink:'https://travel-blog-admin-demo.netlify.app',
     },
     {
         title: 'Travel Blog', stack: ['React'], features2: [],
