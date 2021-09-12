@@ -53,3 +53,25 @@ border:none;
 font-family:Quicksand;
 cursor:pointer;
 `
+
+export const StyledSkillsContainer = styled.div`
+display:flex;
+justify-content:space-around;
+`
+
+export const StyledSkillsColumn = styled.ul`
+
+`
+
+export const StyledBullet = styled.li`
+font-size:0.8em;
+font-family:Quicksand;
+`
+
+export const StyledSecondaryContainer = styled.div`
+display:flex;
+`
+
+export const StyledSecondaryContainerColumn = styled.div`
+
+`
