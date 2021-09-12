@@ -23,7 +23,7 @@ position: absolute;
 top: 50%;
 left: 50%; 
 transform: translate(-50%,-50%);
-min-height:530px;
+min-height:570px;
 `
 
 export const StyledInputGroup = styled.div`

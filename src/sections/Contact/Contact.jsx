@@ -66,8 +66,9 @@ const Contact = () => {
         <PortfolioContext.Consumer>
             {({ refSectionContact, winSize }) => (
                 <StyledMainContactContainer ref={refSectionContact}>
-                    <StyledMainContactHeader>Contact Me</StyledMainContactHeader>
+
                     <StyledFormWrapper>
+                        <StyledMainContactHeader>Contact Me</StyledMainContactHeader>
                         <StyledInputGroup>
                             <StyledLabel>First Name</StyledLabel>
                             <StyledInput winSize={winSize} value={firstName} onChange={handleFirstName} />
