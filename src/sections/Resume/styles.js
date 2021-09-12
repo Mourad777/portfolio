@@ -9,6 +9,7 @@ position:absolute;
 left:50%;
 transform:translateX(-50%);
 width:${props=>props.winSize === 1 ? '100%' : '70%'};
+max-width: 600px;
 `
 
 export const StyledBasicInfo = styled.p`

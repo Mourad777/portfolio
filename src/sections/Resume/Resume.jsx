@@ -102,7 +102,7 @@ const Resume = () => {
                             </StyledSecondaryContainerColumn>
                         </StyledSecondaryContainer>
                         <StyledHeader>Languages Spoken</StyledHeader>
-                        <StyledContentLine style={{ margin: '10px 0' }}>Speak fluent French, English, Russian and intermediate Spanish</StyledContentLine>
+                        <StyledContentLine style={{ margin: '10px 0' }}>Fluent French, English, Russian and intermediate Spanish</StyledContentLine>
                     </StyledResumeWrapper>
                 </StyledResumeContainer>)}
         </PortfolioContext.Consumer>
