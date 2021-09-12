@@ -46,7 +46,7 @@ const Contact = () => {
         formData.append('subject', subject);
         formData.append('email', email)
         formData.append('message', message);
-        const url = 'http://email-server-mourad.herokuapp.com/email';
+        const url = 'https://email-server-mourad.herokuapp.com/email';
 
         const response = await axios.post(url, {
             firstName,
