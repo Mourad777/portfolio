@@ -48,13 +48,26 @@ const ProjectsSection = ({ winSize, refSectionProjects: reference }) => {
         setCurrentSlide(newValue)
     }
 
+    const handleProject =(url) => {
+        if(winSize !== 1) {
+            window.location.href = url
+        }
+    }
+
     const Projects = projects.map(pr => (
         <StyledCard winSize={winSize}>
             <StyledCardTitle>{pr.title}</StyledCardTitle>
-            <StyledDesktopGif src={pr.desktopGif} />
-            <StyledDesktopOutline src="/assets/images/desktop-empty.png" />
-            <StyledMobileGif src={pr.mobileGif} />
-            <StyledMobileOutline src="/assets/images/mobile-empty.png" />
+            <StyledDesktopGif onClick={() => handleProject(pr.liveProjectLink)}
+                src={pr.desktopGif} />
+            <StyledDesktopOutline
+                onClick={() => handleProject(pr.liveProjectLink)}
+                src="/assets/images/desktop-empty.png" />
+            <StyledMobileGif
+                onClick={() => handleProject(pr.liveProjectLink)}
+                src={pr.mobileGif} />
+            <StyledMobileOutline
+                onClick={() => handleProject(pr.liveProjectLink)}
+                src="/assets/images/mobile-empty.png" />
             <StyledTechStackContainer>
                 {pr.stack.map(st => (
                     <StyledTechItem winSize={winSize}>{st}</StyledTechItem>

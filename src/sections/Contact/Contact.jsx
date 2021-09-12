@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+
+import axios from 'axios'
 import { PortfolioContext } from '../../App';
 import {
     StyledFormWrapper,
@@ -7,7 +9,8 @@ import {
     StyledInputTextArea,
     StyledLabel,
     StyledMainContactContainer,
-    StyledMainContactHeader
+    StyledMainContactHeader,
+    StyledSubmitButton
 } from './styles';
 
 const Contact = () => {
@@ -36,6 +39,29 @@ const Contact = () => {
         setMessage(value)
     }
 
+    const handleFormSubmission = async () => {
+        const formData = new FormData();
+        console.log('firstName', firstName)
+        formData.append('firstName', firstName);
+        formData.append('subject', subject);
+        formData.append('email', email)
+        formData.append('message', message);
+        const url = 'http://email-server-mourad.herokuapp.com/email';
+
+        const response = await axios.post(url, {
+            firstName,
+            subject,
+            email,
+            message
+        },
+            {
+                headers: { 'Content-Type': 'application/json' }
+            });
+
+        console.log('response', response)
+
+    }
+
     return (
         <PortfolioContext.Consumer>
             {({ refSectionContact, winSize }) => (
@@ -54,10 +80,13 @@ const Contact = () => {
                             <StyledLabel>Subject</StyledLabel>
                             <StyledInput winSize={winSize} value={subject} onChange={handleSubject} />
                         </StyledInputGroup>
-                        <StyledInputGroup>
+                        <StyledInputGroup style={{ padding: 20 }}>
                             <StyledLabel>Message</StyledLabel>
                             <StyledInputTextArea rows="5" winSize={winSize} value={message} onChange={handleMessage} />
                         </StyledInputGroup>
+                        <StyledSubmitButton onClick={handleFormSubmission} winSize={winSize}>
+                            Submit
+                        </StyledSubmitButton>
                     </StyledFormWrapper>
                 </StyledMainContactContainer>)}
         </PortfolioContext.Consumer>

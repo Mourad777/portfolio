@@ -2,12 +2,12 @@ export const projects = [
     {
         title: 'E-learning Platform', stack: ['React', 'NodeJS', 'MongoDB', 'AWS S3'],
         features: [
-            'SocketIO',
-            'Redux/Redux Forms',
+            // 'SocketIO',
+            // 'Redux/Redux Forms',
             'Multi-level Authentication',
-            'Credit Card Payments',
-            'Coinbase Commerce',
-
+            'Credit Card Payments via Stripe API',
+            'Chat', 
+            'Real-time Updates'
             // 'server-side validation',
             // 'front-end validation',
             // 'xss input filtering',
@@ -15,7 +15,12 @@ export const projects = [
             // 'Redis'
         ],
         features2: [
-            'Google Authentication', 'Chat', 'Sagas', 'Push Notifications via Webpush Api', 'Material Design',
+            'Google Authentication', 
+            'Crypto Payments via Coinbase Commerce API',
+
+            // 'Sagas', 
+            'Push Notifications via Webpush Api', 
+            'Material Design',
         //  'Ckeditor Wysiwyg', 'GraphQL'
         ],
         mobileGif: '/assets/images/boukacademy-mobile-gif.gif', 
@@ -26,7 +31,11 @@ export const projects = [
     {
         title: 'Blog CMS', stack: ['React', 'Laravel', 'MySQL', 'AWS S3'],
         features2: [],
-        features: ['Real-time updates', 'Infinitly scalable file uploads', 'Material Design', 'TinyMCE'],
+        features: ['Real-time updates',
+         'Infinitly scalable file uploads',
+         'Material Design', 
+         'Drag and Drop Photo Gallery',
+         'TinyMCE'],
         mobileGif: '/assets/images/blog-cms-mobile-gif.gif',
         desktopGif: '/assets/images/blog-cms-desktop-gif.gif',
         codeLink: 'https://github.com/Mourad777/travel-blog',

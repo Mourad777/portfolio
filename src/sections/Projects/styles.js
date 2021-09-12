@@ -37,10 +37,11 @@ height:100%;
 export const StyledCard = styled.div`
 background: rgb(28,28,28);
 height: 50vh; 
-min-height:640px;
+min-height:570px;
 width: ${props => props.winSize === 1 ? '300px' : '400px'}; 
 margin:${props => props.winSize === 1 ? 'auto' : '0 5px'}; 
 position: relative;
+
 `;
 
 export const StyledCardTitle = styled.h3`
@@ -48,49 +49,55 @@ color: rgb(232 191 65);
 text-align: center; 
 font-family: Quicksand; 
 font-weight: 500; 
-font-size: 1.5em;
+font-size: 1.3em;
+margin:0;
+padding-top: 10px;
 `;
 
 export const StyledDesktopOutline = styled.img`
 object-fit: cover; 
 width: 300px; 
-top: 20%; 
+top: 15%; 
 left: 50%; 
 transform: translate(-50%,-20%); 
 position: absolute;
+cursor:pointer;
 `;
 
 export const StyledDesktopGif = styled.img`
 object-fit: cover; 
 width: 289px; 
-top: 20%; 
+top: 15%; 
 left: 50%; 
 transform: translate(-50%,-15%); 
 position: absolute;
+cursor:pointer;
 `;
 
 export const StyledMobileOutline = styled.img`
 object-fit: cover; 
 width: 100px; 
-top: 45%; 
+top: 38%; 
 right: 5%; 
 transform: translateY(-45%); 
 position: absolute;
+cursor:pointer;
 `;
 
 export const StyledMobileGif = styled.img`
 object-fit: cover; 
 width: 52px; 
-top: 45%; 
-right: 5%; 
+top: 38%; 
+right: 5.1%; 
 transform: translate(-24px,-45%); 
 position: absolute;
+cursor:pointer;
 `;
 
 export const StyledTechStackContainer = styled.div`
 width: 100%; 
 position: absolute; 
-top: 55%; 
+top: 50%; 
 display: flex; 
 justify-content: space-around;
 `;
@@ -105,7 +112,7 @@ export const StyledFeaturesContainer = styled.div`
 width: 100%; 
 margin-top: 10px; 
 position: absolute; 
-top: 58%; 
+top: 54%; 
 display: flex; 
 justify-content: space-between; 
 flex-direction: column;
@@ -135,7 +142,7 @@ margin-right: 12px;
 export const StyledFeature = styled.span`
 font-family: Quicksand;
 color: rgb(2 224 255);
-font-size:0.9em;
+font-size:0.80em;
 `
 
 export const StyledButtonContainer = styled.div`
