@@ -60,7 +60,7 @@ justify-content:space-around;
 `
 
 export const StyledSkillsColumn = styled.ul`
-
+width:50%;
 `
 
 export const StyledBullet = styled.li`
@@ -73,5 +73,5 @@ display:flex;
 `
 
 export const StyledSecondaryContainerColumn = styled.div`
-
+width:50%;
 `
