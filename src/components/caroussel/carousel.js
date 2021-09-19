@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { createContext } from 'react'
 import PropTypes from 'prop-types'
-
+import { StyledArrowContainerLeft, StyledArrowContainerRight } from '../../sections/Projects/styles';
+import Arrows from '../arrows/arrows';
+export const CarrouselContext = createContext({});
+// this.state.current
 const styles = {
   wrapper: {
     width: '100%',
@@ -15,7 +18,7 @@ const styles = {
 }
 
 class Carousel extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this.state = {
@@ -38,23 +41,23 @@ class Carousel extends React.Component {
     }
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.mounted = true
     this.prepareAutoSlide()
     this.hideFrames()
 
-    this.refs.wrapper.addEventListener('touchmove', this.onTouchMove, {capture: true})
-    this.refs.wrapper.addEventListener('touchend', this.onTouchEnd, {capture: true})
+    this.refs.wrapper.addEventListener('touchmove', this.onTouchMove, { capture: true })
+    this.refs.wrapper.addEventListener('touchend', this.onTouchEnd, { capture: true })
     window.addEventListener('resize', this.onResize);
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     this.mounted = false
     this.clearAutoTimeout()
     clearTimeout(this.debounceTimeoutId)
 
-    this.refs.wrapper.removeEventListener('touchmove', this.onTouchMove, {capture: true})
-    this.refs.wrapper.removeEventListener('touchend', this.onTouchEnd, {capture: true})
+    this.refs.wrapper.removeEventListener('touchmove', this.onTouchMove, { capture: true })
+    this.refs.wrapper.removeEventListener('touchend', this.onTouchEnd, { capture: true })
     window.removeEventListener('resize', this.onResize);
   }
 
@@ -75,7 +78,7 @@ class Carousel extends React.Component {
     return nextState
   }
 
-  hideFrames () {
+  hideFrames() {
     for (let i = 1; i < this.state.frames.length; i++) {
       this.refs['f' + i].style.opacity = 0
     }
@@ -90,7 +93,7 @@ class Carousel extends React.Component {
     }, 25);
   }
 
-  onTouchStart (e) {
+  onTouchStart(e) {
     if (this.state.total < 2) return
     // e.preventDefault()
 
@@ -106,12 +109,12 @@ class Carousel extends React.Component {
       deltaY: 0
     })
 
-    this.refs.wrapper.addEventListener('mousemove', this.onTouchMove, {capture: true})
-    this.refs.wrapper.addEventListener('mouseup', this.onTouchEnd, {capture: true})
-    this.refs.wrapper.addEventListener('mouseleave', this.onTouchEnd, {capture: true})
+    this.refs.wrapper.addEventListener('mousemove', this.onTouchMove, { capture: true })
+    this.refs.wrapper.addEventListener('mouseup', this.onTouchEnd, { capture: true })
+    this.refs.wrapper.addEventListener('mouseleave', this.onTouchEnd, { capture: true })
   }
 
-  onTouchMove (e) {
+  onTouchMove(e) {
     if (e.touches && e.touches.length > 1) return
     this.clearAutoTimeout()
 
@@ -147,19 +150,19 @@ class Carousel extends React.Component {
     this.moveFramesBy(deltaX, deltaY)
   }
 
-  onTouchEnd () {
+  onTouchEnd() {
     const direction = this.decideEndPosition()
     direction && this.transitFramesTowards(direction)
 
     // cleanup
-    this.refs.wrapper.removeEventListener('mousemove', this.onTouchMove, {capture: true})
-    this.refs.wrapper.removeEventListener('mouseup', this.onTouchEnd, {capture: true})
-    this.refs.wrapper.removeEventListener('mouseleave', this.onTouchEnd, {capture: true})
+    this.refs.wrapper.removeEventListener('mousemove', this.onTouchMove, { capture: true })
+    this.refs.wrapper.removeEventListener('mouseup', this.onTouchEnd, { capture: true })
+    this.refs.wrapper.removeEventListener('mouseleave', this.onTouchEnd, { capture: true })
 
     setTimeout(() => this.prepareAutoSlide(), this.props.duration)
   }
 
-  decideEndPosition () {
+  decideEndPosition() {
     const { deltaX = 0, deltaY = 0, current, frames } = this.state
     const { axis, loop, minMove } = this.props
 
@@ -182,7 +185,7 @@ class Carousel extends React.Component {
     }
   }
 
-  moveFramesBy (deltaX, deltaY) {
+  moveFramesBy(deltaX, deltaY) {
     const { prev, current, next } = this.state.movingFrames
     const { frameWidth, frameHeight } = this.state
 
@@ -207,7 +210,7 @@ class Carousel extends React.Component {
     }
   }
 
-  prepareAutoSlide () {
+  prepareAutoSlide() {
     if (this.state.frames.length < 2) return
 
     this.clearAutoTimeout()
@@ -223,7 +226,7 @@ class Carousel extends React.Component {
   }
 
   // auto slide to 'next' or 'prev'
-  autoSlide (rel) {
+  autoSlide(rel) {
     this.clearAutoTimeout()
 
     switch (rel) {
@@ -239,13 +242,13 @@ class Carousel extends React.Component {
     setTimeout(() => this.prepareAutoSlide(), this.props.duration)
   }
 
-  next () {
+  next() {
     const { current, frames } = this.state
     if (!this.props.loop && current === frames.length - 1) return false
     this.autoSlide('next')
   }
 
-  prev () {
+  prev() {
     if (!this.props.loop && this.state.current === 0) return false
     const { prev, next } = this.state.movingFrames
 
@@ -263,11 +266,11 @@ class Carousel extends React.Component {
     this.autoSlide('prev')
   }
 
-  clearAutoTimeout () {
+  clearAutoTimeout() {
     clearTimeout(this.state.slider)
   }
 
-  updateFrameSize (cb) {
+  updateFrameSize(cb) {
     const { width, height } = window.getComputedStyle(this.refs.wrapper)
     this.setState({
       frameWidth: parseFloat(width.split('px')[0]),
@@ -275,7 +278,7 @@ class Carousel extends React.Component {
     }, cb)
   }
 
-  getSiblingFrames () {
+  getSiblingFrames() {
     return {
       current: this.refs['f' + this.getFrameId()],
       prev: this.refs['f' + this.getFrameId('prev')],
@@ -283,7 +286,7 @@ class Carousel extends React.Component {
     }
   }
 
-  prepareSiblingFrames () {
+  prepareSiblingFrames() {
     const siblings = this.getSiblingFrames()
 
     if (!this.props.loop) {
@@ -306,7 +309,7 @@ class Carousel extends React.Component {
     return siblings
   }
 
-  getFrameId (pos) {
+  getFrameId(pos) {
     const { frames, current } = this.state
     const total = frames.length
     switch (pos) {
@@ -319,7 +322,7 @@ class Carousel extends React.Component {
     }
   }
 
-  transitFramesTowards (direction) {
+  transitFramesTowards(direction) {
     const { prev, current, next } = this.state.movingFrames
     const { duration, axis, onTransitionEnd } = this.props
 
@@ -372,26 +375,29 @@ class Carousel extends React.Component {
   //   }
   // }
 
-  render () {
+  render() {
     const { frames, current } = this.state
     const { widgets, axis, loop, auto, interval } = this.props
     const wrapperStyle = objectAssign(styles.wrapper, this.props.style)
 
     return (
+
       <div style={wrapperStyle}>
+        {(this.state.current > 0 && (this.props.winSize < 3)) && <StyledArrowContainerLeft winSize={this.props.winSize}><Arrows onClick={() => this.prev()} /></StyledArrowContainerLeft>}
+        {(this.state.current < 2 && (this.props.winSize < 3)) && <StyledArrowContainerRight winSize={this.props.winSize}><Arrows onClick={() => this.next()} /></StyledArrowContainerRight>}
         <div
           ref='wrapper'
-          style={objectAssign({overflow: 'hidden'}, wrapperStyle)}
+          style={objectAssign({ overflow: 'hidden' }, wrapperStyle)}
           onTouchStart={this.onTouchStart}
           className={this.props.className}
           onMouseDown={this.onTouchStart} >
           {
             frames.map((frame, i) => {
-              const frameStyle = objectAssign({zIndex: 99 - i}, styles.frame)
+              const frameStyle = objectAssign({ zIndex: 99 - i }, styles.frame)
               return <div ref={'f' + i} key={i} style={frameStyle}>{frame}</div>
             })
           }
-          { this.props.frames && this.props.children }
+          {this.props.frames && this.props.children}
         </div>
         {
           widgets && [].concat(widgets).map((Widget, i) => (
@@ -405,6 +411,7 @@ class Carousel extends React.Component {
           ))
         }
       </div>
+
     )
   }
 }
@@ -431,7 +438,7 @@ Carousel.defaultProps = {
   minMove: 42
 }
 
-function translateXY (el, x, y, duration = 0) {
+function translateXY(el, x, y, duration = 0) {
   if (!el) return
 
   el.style.opacity = '1'
@@ -444,7 +451,7 @@ function translateXY (el, x, y, duration = 0) {
   el.style.webkitTransform = `translate(${x}px, ${y}px) translateZ(0)`
 }
 
-function objectAssign (target) {
+function objectAssign(target) {
   var output = Object(target)
   for (var index = 1; index < arguments.length; index++) {
     var source = arguments[index]

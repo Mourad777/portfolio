@@ -8,7 +8,7 @@ export const StyledResumeWrapper = styled.div`
 position:absolute;
 left:50%;
 transform:translateX(-50%);
-width:${props=>props.winSize === 1 ? '100%' : '70%'};
+width:${props=>props.winSize === 1 ? '100%' : '80%'};
 max-width: 600px;
 `
 
@@ -43,6 +43,14 @@ font-family: Quicksand;
 padding:0 30px;
 font-size: 0.7em;
 margin:0;
+`
+
+export const StyledLink = styled.a`
+font-family: Quicksand;
+padding:0 30px;
+font-size: 0.7em;
+margin:0;
+display:block;
 `
 
 export const StyledReturnButton = styled.button`

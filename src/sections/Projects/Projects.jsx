@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { PortfolioContext } from '../../App';
 import {
     StyledButtonContainer,
@@ -24,7 +24,7 @@ import {
 
 } from './styles';
 
-import Carousel from '../../components/caroussel/carousel'
+import Carousel, { CarrouselContext } from '../../components/caroussel/carousel'
 import Arrows from '../../components/arrows/arrows';
 import { ScrollTrigger } from 'gsap/all'
 import { projects } from './projectData';
@@ -44,17 +44,20 @@ const ProjectsSection = ({ winSize, refSectionProjects: reference }) => {
 
     const [currentSlide, setCurrentSlide] = useState(0);
 
+  
+
     const handleSlide = (newValue) => {
         setCurrentSlide(newValue)
     }
 
-    const handleProject =(url) => {
-        if(winSize !== 1) {
+    const handleProject = (url) => {
+        if (winSize !== 1) {
             window.location.href = url
         }
     }
 
     const Projects = projects.map(pr => (
+
         <StyledCard winSize={winSize}>
             <StyledCardTitle>{pr.title}</StyledCardTitle>
             <StyledDesktopGif onClick={() => handleProject(pr.liveProjectLink)}
@@ -95,22 +98,23 @@ const ProjectsSection = ({ winSize, refSectionProjects: reference }) => {
     ))
 
     return (
+
         <PortfolioContext.Consumer>
+            {({ winSize }) => (
+                <CarrouselContext.Consumer>
+                    {({ autoSlide }) => (
+                        <StyledMainContainer ref={reference}>
+                            {winSize > 1 && <StyledMainHeader>Projects</StyledMainHeader>}
+                            <StyledProjectContainer>
 
-            {({ refSectionProjects, winSize }) => (
-                <StyledMainContainer ref={refSectionProjects}>
-                    {winSize > 1 && <StyledMainHeader>Projects</StyledMainHeader>}
-                    {(currentSlide > 0 && (winSize < 3)) && <StyledArrowContainerLeft><Arrows /></StyledArrowContainerLeft>}
-                    {(currentSlide < 2 && (winSize < 3)) && <StyledArrowContainerRight><Arrows /></StyledArrowContainerRight>}
-                    <StyledProjectContainer>
-
-                        {winSize < 3 ? <Carousel onChangeSlide={(newValue) => handleSlide(newValue)} auto axis={'x'}
-                            // widgets={[Dots, Buttons]}
-                            className="custom-class">
-                            {Projects}
-                        </Carousel> : Projects}
-                    </StyledProjectContainer>
-                </StyledMainContainer>)}
+                                {winSize < 3 ? <Carousel winSize={winSize} current={currentSlide} onChangeSlide={(newValue) => handleSlide(newValue)} auto axis={'x'}
+                                    // widgets={[Dots, Buttons]}
+                                    className="custom-class">
+                                    {Projects}
+                                </Carousel> : Projects}
+                            </StyledProjectContainer>
+                        </StyledMainContainer>)}
+                </CarrouselContext.Consumer>)}
         </PortfolioContext.Consumer>
     )
 }

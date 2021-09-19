@@ -24,9 +24,10 @@ position: absolute;
 left: 50%;
 margin-left: -30px;
 bottom: 20px;
+cursor:pointer;
 `
-const Arrows = () => (
-    <StyledArrows>
+const Arrows = ({onClick}) => (
+    <StyledArrows onClick={onClick}>
         <StyledArrowsPath style={{ animationDelay: '-1s' }} d="M0 0 L30 32 L60 0"></StyledArrowsPath>
         <StyledArrowsPath style={{ animationDelay: '-0.5s' }} d="M0 20 L30 52 L60 20"></StyledArrowsPath>
         <StyledArrowsPath style={{ animationDelay: '0s' }} d="M0 40 L30 72 L60 40"></StyledArrowsPath>

@@ -14,6 +14,7 @@ import {
     StyledBullet,
     StyledSecondaryContainer,
     StyledSecondaryContainerColumn,
+    StyledLink,
 } from './styles';
 import { ScrollTrigger } from 'gsap/all'
 
@@ -30,8 +31,7 @@ const Resume = () => {
                 <StyledResumeContainer>
                     <StyledReturnButton onClick={() => handleResume(false)}>Portfolio</StyledReturnButton>
                     <StyledBasicInfo style={{ marginTop: 10 }}>Mourad Boukabache</StyledBasicInfo>
-                    <StyledBasicInfo>5-310 Rue Bergevin</StyledBasicInfo>
-                    <StyledBasicInfo>Lasalle, Québec</StyledBasicInfo>
+                    <StyledLink href="https://github.com/Mourad777" style={{textAlign:'center',fontSize:'0.9em',marginBottom:5}}>Github</StyledLink>
                     <StyledBasicInfo>(514)562-9249</StyledBasicInfo>
                     <StyledBasicInfo>mourad777b@gmail.com</StyledBasicInfo>
 
@@ -72,6 +72,28 @@ const Resume = () => {
                                 <StyledContentLine>Sept 2011 - April 2012</StyledContentLine>
                                 <StyledContentLine>7141 rue Sherbrooke O, Montreal Quebec</StyledContentLine>
                                 <StyledContentLine>Program: Biology </StyledContentLine>
+                            </StyledSecondaryContainerColumn>
+                        </StyledSecondaryContainer>
+
+                        <StyledHeader>Projects</StyledHeader>
+                        <StyledSecondaryContainer winSize={winSize}>
+                            <StyledSecondaryContainerColumn>
+                                <StyledSubHeader>E-Learning Platform</StyledSubHeader>
+                                <StyledContentLine>Built with the <b>MERN stack</b></StyledContentLine>
+                                <StyledContentLine>Manage students, grades, lessons, assignments</StyledContentLine>
+                                <StyledContentLine>Includes real-time updates and payment setup</StyledContentLine>
+                                <StyledLink href="http://boukacademy.com">Live Demo</StyledLink>
+                                <StyledLink href="https://github.com/Mourad777/e-learn-front">Code front-end</StyledLink>
+                                <StyledLink href="https://github.com/Mourad777/boukacademy">Code back-end</StyledLink>
+                            </StyledSecondaryContainerColumn>
+                            <StyledSecondaryContainerColumn>
+                                <StyledSubHeader>Blog/Blog CMS</StyledSubHeader>
+                                <StyledContentLine>Built with <b> Laravel and React</b></StyledContentLine>
+                                <StyledContentLine>Manages blog content (videos, photos, and posts) and categorize it by country, tags, and categories using a relational database, dynamic world map updates in real-time</StyledContentLine>
+                                <StyledLink href="https://travel-blog-admin-demo.netlify.app/">Live Demo</StyledLink>
+                                <StyledLink href=" https://github.com/Mourad777/travel-blog-admin">Code cms</StyledLink>
+                                <StyledLink href="https://github.com/Mourad777/travel-blog-public">Code blog</StyledLink>
+                                <StyledLink href="https://github.com/Mourad777/travel-blog">Code back-end</StyledLink>
                             </StyledSecondaryContainerColumn>
                         </StyledSecondaryContainer>
 

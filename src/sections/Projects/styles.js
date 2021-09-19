@@ -177,14 +177,20 @@ export const StyledArrowContainerLeft = styled.div`
 position: absolute;
 top: 50%;
 transform: translateY(-50%) rotate(90deg);
-left: 0;
-z-index: 1;
+left:${props=>props.winSize === 2 ? '80px' : '0'};
+z-index: 100;
+cursor:pointer;
+height:120px;
+width:120px;
 `
 
 export const StyledArrowContainerRight = styled.div`
 position: absolute;
 top: 50%;
 transform: translateY(-50%) rotate(-90deg);
-right: 0;
-z-index: 1;
+right: ${props=>props.winSize === 2 ? '80px' : '0'};
+z-index: 100;
+cursor:pointer;
+height:120px;
+width:120px;
 `
